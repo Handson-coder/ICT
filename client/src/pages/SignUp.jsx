@@ -1,10 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { signUp } from "../store/actions/index";
+import Swal from "sweetalert2";
 
 export default function SignUp() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const inputValue = (e, key) => {
+    const newUser = { ...user };
+    newUser[key] = e.target.value;
+    setUser(newUser);
+  };
+
+  const signUpButton = () => {
+    const payload = {
+      username: user.username,
+      email: user.email,
+      password: user.password,
+    };
+    dispatch(signUp(payload))
+      .then(({ data }) => {
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("email", data.email);
+        Swal.fire({
+          icon: "info",
+          title: "Success!",
+          text: `Login for more feature!`,
+        });
+      })
+      .then((_) => {
+        history.push("/sign-in");
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "info",
+          title: "Oops...",
+          text: `${err.response.data.message}`,
+        });
+        setUser({
+          username: "",
+          email: "",
+          password: "",
+        });
+      });
+  };
+
   return (
     <div className="flex">
-      <div className="p-36 pl-44">
+      <div className="pr-36 pl-44 pb-24 pt-32">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="484.79"
@@ -285,8 +338,8 @@ export default function SignUp() {
               <text
                 transform="translate(81.686 274.562)"
                 fill="#e8e8e3"
-                font-size="9"
-                font-family="Montserrat-Regular, Montserrat"
+                fontSize="9"
+                fontFamily="Montserrat-Regular, Montserrat"
               >
                 <tspan x="-14.859" y="0">
                   LOGIN
@@ -688,22 +741,44 @@ export default function SignUp() {
           </g>
         </svg>
       </div>
-      <div className="pt-24 bg-base-100">
+      <div className="pt-12 bg-base-100">
         <div className="signin bg-base-200">
           <div className="uppercase pb-10 text-2xl">Sign Up</div>
           <div className="form-control">
-          <label className="label">
+            <label className="label">
               <span className="label-text">Username</span>
             </label>
-            <input type="text" placeholder="username" className="input" />
+            <input
+              type="text"
+              placeholder="username"
+              className="input"
+              onChange={(e) => inputValue(e, "username")}
+              value={user.username}
+            />
             <label className="label pt-5">
               <span className="label-text">Email</span>
             </label>
-            <input type="email" placeholder="email" className="input" />
+            <input
+              type="email"
+              placeholder="email"
+              className="input"
+              onChange={(e) => inputValue(e, "email")}
+              value={user.email}
+            />
             <label className="label pt-5">
               <span className="label-text">Password</span>
             </label>
-            <input type="password" placeholder="password" className="input" />
+            <input
+              type="password"
+              placeholder="password"
+              className="input"
+              onChange={(e) => inputValue(e, "password")}
+              value={user.password}
+            />
+            <br />
+            <button onClick={signUpButton} className="btn btn-outline">
+              Sign Up
+            </button>
           </div>
           <div className="pt-10">
             <div>

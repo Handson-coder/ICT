@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   FETCH_MOVIES,
   GET_GENRES,
@@ -33,12 +34,14 @@ export const fetchMovies = (payload) => {
     payload
   }
 }
+
 export const genre = (payload) => {
   return {
     type: GET_GENRES,
     payload
   }
 }
+
 export const sumOfGenre = (payload) => {
   return {
     type : GET_SUM_OF_GENRE,
@@ -104,4 +107,16 @@ export function fetchingMovies() {
         console.log(err);
       });
   };
+}
+
+export const signIn = (payload) => {
+  return (dispatch) => {
+   return axios.post(`${baseUrl}/users/login`, payload)
+  }
+}
+
+export const signUp = (payload) => {
+  return (dispatch) => {
+   return axios.post(`${baseUrl}/users/register`, payload)
+  }
 }

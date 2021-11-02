@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { settingIsLoggedIn } from "../store/actions";
+import { Link as LinkToChart } from "react-scroll";
 
 export default function Navbar() {
   const history = useHistory();
@@ -35,6 +36,9 @@ export default function Navbar() {
             >
               Now Playing
             </Link>
+            <LinkToChart className="btn btn-ghost btn-sm rounded-btn" to="toChart" smooth={true} duration={1000}>
+              Chart
+            </LinkToChart>
           </div>
         </div>
         <div className="navbar-end">
@@ -61,12 +65,20 @@ export default function Navbar() {
             >
               Now Playing
             </Link>
+            <Link to="/favourites" className="btn btn-ghost btn-sm rounded-btn">
+              Favourites
+            </Link>
+            <LinkToChart
+              className="btn btn-ghost btn-sm rounded-btn"
+              to="toChart"
+              smooth={true}
+              duration={1000}
+            >
+              Chart
+            </LinkToChart>
           </div>
         </div>
         <div className="navbar-end">
-          <Link to="/favourites" className="btn btn-ghost btn-sm rounded-btn">
-            Favourites
-          </Link>
           <button
             className="btn btn-ghost btn-sm rounded-btn"
             onClick={signOutButton}

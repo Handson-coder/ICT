@@ -83,7 +83,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <div className="chart pt-20">
+      <div id="toChart" className="chart pt-20">
         <h1 className="chart-header text-xl">Genre's Chart Frequency (2x)</h1>
         <BarChart chartData={chartData}></BarChart>
       </div>

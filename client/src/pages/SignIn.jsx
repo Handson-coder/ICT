@@ -1,10 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { settingIsLoggedIn, signIn } from "../store/actions/index";
+import Swal from "sweetalert2";
 
 export default function SignIn() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const inputValue = (e, key) => {
+    const newUser = { ...user };
+    newUser[key] = e.target.value;
+    setUser(newUser);
+  };
+
+  const signInButton = () => {
+    const payload = {
+      email: user.email,
+      password: user.password,
+    };
+    dispatch(signIn(payload))
+      .then(({ data }) => {
+        dispatch(settingIsLoggedIn(true))
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("email", data.email);
+        history.push("/");
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "info",
+          title: "Oops...",
+          text: `${err.response.data.message}`,
+        });
+        setUser({
+          email: "",
+          password: "",
+        });
+      });
+  };
   return (
     <div className="flex">
-      <div className="p-36 pl-44">
+      <div className="pr-36 pl-44 pb-28 pt-28">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="484.79"
@@ -285,8 +327,8 @@ export default function SignIn() {
               <text
                 transform="translate(81.686 274.562)"
                 fill="#e8e8e3"
-                font-size="9"
-                font-family="Montserrat-Regular, Montserrat"
+                fontSize="9"
+                fontFamily="Montserrat-Regular, Montserrat"
               >
                 <tspan x="-14.859" y="0">
                   LOGIN
@@ -688,18 +730,34 @@ export default function SignIn() {
           </g>
         </svg>
       </div>
-      <div className="pt-32 bg-base-100">
+      <div className="pt-24 bg-base-100">
         <div className="signin bg-base-200">
           <div className="uppercase pb-10 text-2xl">Sign In</div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
-            <input type="" placeholder="email" className="input" />
+            <input
+              type=""
+              placeholder="email"
+              className="input"
+              onChange={(e) => inputValue(e, "email")}
+              value={user.email}
+            />
             <label className="label pt-5">
               <span className="label-text">Password</span>
             </label>
-            <input type="password" placeholder="password" className="input" />
+            <input
+              type="password"
+              placeholder="password"
+              className="input"
+              onChange={(e) => inputValue(e, "password")}
+              value={user.password}
+            />
+            <br />
+            <button onClick={signInButton} className="btn btn-outline">
+              Sign In
+            </button>
           </div>
           <div className="pt-10">
             <div>
