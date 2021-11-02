@@ -1,14 +1,5 @@
 [
   {
-    "title": "Transformers",
-    "synopsis": "An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, with a clue to the ultimate power held by a teenager.",
-    "trailerUrl": "https://www.imdb.com/video/vi513779993?playlistId=tt0418279&ref_=tt_ov_vi",
-    "imgUrl": "https://ik.imagekit.io/iefyzkif2xd/transformers_wHuoh_y3e.jpg",
-    "rating": 6,
-    "genre": "Action",
-    "price": 55000
-  },
-  {
     "title": "Money Heist",
     "synopsis": "An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history - stealing 2.4 billion euros from the Royal Mint of Spain.",
     "trailerUrl": "https://www.imdb.com/video/vi1583726617?playlistId=tt6468322&ref_=tt_pr_ov_vi",
@@ -159,6 +150,15 @@
     "imgUrl": "https://ik.imagekit.io/iefyzkif2xd/Me_Before_You_gYje9tXer.jpg",
     "rating": 7,
     "genre": "Romance",
+    "price": 55000
+  },
+  {
+    "title": "Transformers",
+    "synopsis": "An ancient struggle between two Cybertronian races, the heroic Autobots and the evil Decepticons, comes to Earth, with a clue to the ultimate power held by a teenager.",
+    "trailerUrl": "https://www.imdb.com/video/vi513779993?playlistId=tt0418279&ref_=tt_ov_vi",
+    "imgUrl": "https://ik.imagekit.io/iefyzkif2xd/transformers_wHuoh_y3e.jpg",
+    "rating": 6,
+    "genre": "Action",
     "price": 55000
   },
   {

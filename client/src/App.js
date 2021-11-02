@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import LandingPage from './pages/LandingPage';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import NowPlaying from './pages/NowPlaying'
 
 function App() {
   return (
@@ -16,10 +17,10 @@ function App() {
       <Switch>
         {/* <Route path="/create-user">
           <FormCreateUser></FormCreateUser>
-        </Route>
-        <Route path="/create-product">
-          <FormCreateProduct></FormCreateProduct>
         </Route> */}
+        <Route path="/now-playing">
+          <NowPlaying></NowPlaying>
+        </Route>
         <Route path="/sign-up">
           <SignUp></SignUp>
         </Route>

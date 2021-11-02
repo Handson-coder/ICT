@@ -110,3 +110,13 @@ code {
   padding-left: 4rem;
   padding-right: 4rem;
 }
+
+.image {
+  height: 17rem;
+  width: 19rem;
+}
+
+.center-text {
+  justify-content: center;
+  text-align: center;
+}
