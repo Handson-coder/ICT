@@ -1,0 +1,11 @@
+export const FETCH_MOVIES = 'movies/fetchMovies'
+export const GET_GENRES = "genres/getGenres"
+export const GET_SUM_OF_GENRE = "sumOfGenre/getSumOfGenre"
+// export const FETCH_ITEM = 'item/fetchItem'
+// export const DELETE_ITEM = 'item/deleteItems'
+// export const FETCH_CATEGORIES = 'categories/fetchCategories'
+export const SET_IS_LOGGED_IN = 'boolean/setIsLoggedIn'
+// export const SET_CREATE = 'create/createProduct'
+// export const LOGIN_USER = 'user/userLogin'
+// export const LOGIN_GOOGLE = 'userGoogle/googleLogin'
+// export const CREATE_USER = 'payloadUser/createUser'

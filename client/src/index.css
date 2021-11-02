@@ -1,13 +1,112 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Nunito", sans-serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar {
+  font-family: "Nunito", sans-serif;
+  background-color: #292a2c;
+}
+
+.container {
+  height: 99vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 4rem;
+}
+
+.container div {
+  margin-top: -13rem;
+  width: 50%;
+}
+.container .text {
+  padding-bottom: 1rem;
+}
+
+.photo-landing-page img {
+  width: 120rem;
+  margin-bottom: 3rem;
+  max-width: 46rem;
+  border-radius: 25px;
+}
+
+.heading {
+  font-size: 4rem;
+  line-height: 1.2;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+}
+
+.box-container {
+  background-color: #292a2c;
+  position: absolute;
+  top: 800px;
+  z-index: 100 !important;
+  color: rgb(182, 146, 26);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -15rem;
+  margin-bottom: 5rem;
+  margin-left: 6rem;
+  margin-right: 5rem;
+  align-items: center;
+  line-height: 1.6;
+  border-radius: 20px;
+}
+
+.box-container div {
+  margin: 2rem 2rem;
+}
+.box-container h2 {
+  font-size: 1.3rem;
+  padding-bottom: 1rem;
+}
+.box-container .box1 {
+  border-right: 1px solid rgb(117, 117, 117);
+}
+.box-container .box3 {
+  border-left: 1px solid rgb(117, 117, 117);
+}
+
+.signin {
+  font-family: "Nunito", sans-serif;
+  justify-content: center;
+  text-align: center;
+  height: fit-content;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  border-radius: 25px;
+}
+
+.input {
+  width: 23rem;
+}
+
+.chart-header {
+  justify-content: center;
+  text-align: center;
+}
+
+.chart {
+  padding-top: 0;
+  padding-bottom: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
