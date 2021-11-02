@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {
   FETCH_MOVIES,
+  FETCH_MOVIE,
   GET_GENRES,
   GET_SUM_OF_GENRE,
   // FETCH_ITEM,
@@ -34,6 +35,12 @@ export const fetchMovies = (payload) => {
     payload
   }
 }
+export const fetchMovie = (payload) => {
+  return {
+    type: FETCH_MOVIE,
+    payload
+  }
+}
 
 export const genre = (payload) => {
   return {
@@ -44,7 +51,7 @@ export const genre = (payload) => {
 
 export const sumOfGenre = (payload) => {
   return {
-    type : GET_SUM_OF_GENRE,
+    type: GET_SUM_OF_GENRE,
     payload
   }
 }
@@ -90,15 +97,15 @@ export function fetchingMovies() {
             Romance++
           }
         }
-        sumGenre.push(Action*20)
-        sumGenre.push(Crime*20)
-        sumGenre.push(Horror*20)
-        sumGenre.push(Adventure*20)
-        sumGenre.push(Scifi*20)
-        sumGenre.push(Animation*20)
-        sumGenre.push(Fantasy*20)
-        sumGenre.push(Thriller*20)
-        sumGenre.push(Romance*20)
+        sumGenre.push(Action * 20)
+        sumGenre.push(Crime * 20)
+        sumGenre.push(Horror * 20)
+        sumGenre.push(Adventure * 20)
+        sumGenre.push(Scifi * 20)
+        sumGenre.push(Animation * 20)
+        sumGenre.push(Fantasy * 20)
+        sumGenre.push(Thriller * 20)
+        sumGenre.push(Romance * 20)
         dispatch(sumOfGenre(sumGenre))
         let result = [...new Set(genreMovies)]
         dispatch(genre(result))
@@ -109,14 +116,40 @@ export function fetchingMovies() {
   };
 }
 
+export const fetchingMovie = (id) => {
+  return (dispatch) => {
+    fetch(`${baseUrl}/movies/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(fetchMovie(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const signIn = (payload) => {
   return (dispatch) => {
-   return axios.post(`${baseUrl}/users/login`, payload)
+    return axios.post(`${baseUrl}/users/login`, payload)
   }
 }
 
 export const signUp = (payload) => {
   return (dispatch) => {
-   return axios.post(`${baseUrl}/users/register`, payload)
+    return axios.post(`${baseUrl}/users/register`, payload)
+  }
+}
+
+export const addToFavouriteList = (payload) => {
+  return (dispatch) => {
+    return axios.post(`${baseUrl}/favourites/${payload.MovieId}`, {
+      UserId: payload.UserId,
+      MovieId: payload.MovieId
+    }, {
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
   }
 }

@@ -1,4 +1,5 @@
 export const FETCH_MOVIES = 'movies/fetchMovies'
+export const FETCH_MOVIE = 'movie/fetchMovie'
 export const GET_GENRES = "genres/getGenres"
 export const GET_SUM_OF_GENRE = "sumOfGenre/getSumOfGenre"
 // export const FETCH_ITEM = 'item/fetchItem'

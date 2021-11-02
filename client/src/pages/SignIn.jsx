@@ -30,6 +30,7 @@ export default function SignIn() {
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("username", data.username);
         localStorage.setItem("email", data.email);
+        localStorage.setItem("id", data.id);
         history.push("/");
       })
       .catch((err) => {

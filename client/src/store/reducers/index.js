@@ -1,5 +1,6 @@
 import {
   FETCH_MOVIES,
+  FETCH_MOVIE,
   GET_GENRES,
   GET_SUM_OF_GENRE,
   // DELETE_ITEM,
@@ -14,7 +15,7 @@ const initialState = {
   movies: [],
   genres: [],
   sumOfGenre: [],
-  // item: {},
+  movie: {},
   // categories: [],
   isLoggedIn: false,
   // user: {}
@@ -25,6 +26,8 @@ function reducer(state = initialState, action) {
   switch (type) {
     case FETCH_MOVIES:
       return { ...state, movies: payload }
+    case FETCH_MOVIE:
+      return { ...state, movie: payload }
     case GET_GENRES:
       return { ...state, genres: payload }
     case GET_SUM_OF_GENRE:

@@ -65,7 +65,7 @@ export default function NowPlaying() {
                   return (
                     <tr key={index}>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-600">{index + 1}</div>
+                        <div className="text-sm">{index + 1}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <img className="image" src={movie.imgUrl} alt="" />

@@ -29,7 +29,8 @@ class ControllerFavourite {
       } else {
         await Favourite.create({
           UserId: req.user.id,
-          MovieId: foundMovie.id
+          MovieId: foundMovie.id,
+          is_paid: false
         })
         res.status(201).json({ message: `${foundMovie.title} has been added to you favourite lists` })
       }
