@@ -46,7 +46,7 @@ export default function Navbar() {
 
   if (!isLoggedIn) {
     return (
-      <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
+      <div className="navbar shadow-lg bg-neutral text-neutral-content rounded-box">
         <div className="px-2 mx-2 navbar-start">
           <button onClick={goToLandingPage}>
             <span className="text-2xl font-birthstone italic">XX-</span>
@@ -55,37 +55,43 @@ export default function Navbar() {
         </div>
         <div className="hidden px-2 mx-2 navbar-center lg:flex">
           <div className="flex items-stretch">
-            <Link
-              onClick={choosenNavbarMenuNowPlaying}
-              className={
-                classNowPlaying
-                  ? classNowPlaying
-                  : "btn btn-ghost btn-sm rounded-btn"
-              }
-              to="/now-playing"
-            >
-              Now Playing
-            </Link>
-            <LinkToChart
-              className="btn btn-ghost btn-sm rounded-btn"
-              to="toChart"
-              smooth={true}
-              duration={1000}
-            >
-              Chart
-            </LinkToChart>
+            <div className="pr-5">
+              <Link
+                onClick={choosenNavbarMenuNowPlaying}
+                className={
+                  classNowPlaying
+                    ? classNowPlaying
+                    : "btn btn-ghost btn-sm rounded-btn"
+                }
+                to="/now-playing"
+              >
+                Now Playing
+              </Link>
+            </div>
+            <div className="pl-5">
+              <LinkToChart
+                className="btn btn-ghost btn-sm rounded-btn"
+                to="toChart"
+                smooth={true}
+                duration={1000}
+              >
+                Chart
+              </LinkToChart>
+            </div>
           </div>
         </div>
         <div className="navbar-end">
-          <Link
-            to="/sign-in"
-            onClick={choosenNavbarMenuSignIn}
-            className={
-              classSignIn ? classSignIn : "btn btn-ghost btn-sm rounded-btn"
-            }
-          >
-            Sign In
-          </Link>
+          <div className="px-5">
+            <Link
+              to="/sign-in"
+              onClick={choosenNavbarMenuSignIn}
+              className={
+                classSignIn ? classSignIn : "btn btn-ghost btn-sm rounded-btn"
+              }
+            >
+              Sign In
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -100,45 +106,53 @@ export default function Navbar() {
         </div>
         <div className="hidden px-2 mx-2 navbar-center lg:flex">
           <div className="flex items-stretch">
-            <Link
-              onClick={choosenNavbarMenuNowPlaying}
-              to="/now-playing"
-              className={
-                classNowPlaying
-                  ? classNowPlaying
-                  : "btn btn-ghost btn-sm rounded-btn"
-              }
-            >
-              Now Playing
-            </Link>
-            <Link
-              to="/favourites"
-              onClick={choosenNavbarMenuFavourites}
-              className={
-                classFavourites
-                  ? classFavourites
-                  : "btn btn-ghost btn-sm rounded-btn"
-              }
-            >
-              Favourites
-            </Link>
-            <LinkToChart
-              className="btn btn-ghost btn-sm rounded-btn"
-              to="toChart"
-              smooth={true}
-              duration={1000}
-            >
-              Chart
-            </LinkToChart>
+            <div className="pr-5">
+              <Link
+                onClick={choosenNavbarMenuNowPlaying}
+                to="/now-playing"
+                className={
+                  classNowPlaying
+                    ? classNowPlaying
+                    : "btn btn-ghost btn-sm rounded-btn"
+                }
+              >
+                Now Playing
+              </Link>
+            </div>
+            <div className="pr-5 pl-5">
+              <Link
+                to="/favourites"
+                onClick={choosenNavbarMenuFavourites}
+                className={
+                  classFavourites
+                    ? classFavourites
+                    : "btn btn-ghost btn-sm rounded-btn"
+                }
+              >
+                Favourites
+              </Link>
+            </div>
+            <div className="pl-5">
+              <LinkToChart
+                className="btn btn-ghost btn-sm rounded-btn"
+                to="toChart"
+                smooth={true}
+                duration={1000}
+              >
+                Chart
+              </LinkToChart>
+            </div>
           </div>
         </div>
         <div className="navbar-end">
-          <button
-            className="btn btn-ghost btn-sm rounded-btn"
-            onClick={signOutButton}
-          >
-            Sign Out
-          </button>
+          <div className="px-5">
+            <button
+              className="btn btn-ghost btn-sm rounded-btn"
+              onClick={signOutButton}
+            >
+              Sign Out
+            </button>
+          </div>
           <div className="flex-none">
             <div className="avatar">
               <div className="rounded-full w-10 h-10 m-1">

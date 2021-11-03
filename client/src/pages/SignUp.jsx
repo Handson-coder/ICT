@@ -57,7 +57,7 @@ export default function SignUp() {
 
   return (
     <div className="flex">
-      <div className="pr-36 pl-44 pb-24 pt-32">
+      <div className="pl-96 pr-16 pl-44 pb-24 pt-56">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="484.79"
@@ -741,7 +741,7 @@ export default function SignUp() {
           </g>
         </svg>
       </div>
-      <div className="pt-12 bg-base-100">
+      <div className="pt-32 pl-16 bg-base-100">
         <div className="signin bg-base-200">
           <div className="uppercase pb-10 text-2xl">Sign Up</div>
           <div className="form-control">

@@ -25,7 +25,7 @@ export default function LandingPage() {
           "rgb(3, 126, 126)",
           "rgb(132, 2, 132)",
           "rgb(194, 192, 192)",
-          "rgb(211, 105, 30)"
+          "rgb(211, 105, 30)",
         ],
         borderWidth: 1,
       },
@@ -55,7 +55,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <section>
+      <div className="box">
         <div className="box-container">
           <div className="box1">
             <div className="text">
@@ -82,8 +82,8 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
-      <div id="toChart" className="chart pt-20">
+      </div>
+      <div id="toChart" className="chart pt-10">
         <h1 className="chart-header text-xl">Genre's Chart Frequency (2x)</h1>
         <BarChart chartData={chartData}></BarChart>
       </div>

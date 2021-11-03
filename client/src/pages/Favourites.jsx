@@ -67,7 +67,7 @@ export default function Favourites() {
       confirmButtonText: "Submit",
       showLoaderOnConfirm: true,
       preConfirm: (invoiceID) => {
-        return fetch(`http://localhost:9000/favourites/status/payment/${id}`, {
+        return fetch(`https://handson-itc.herokuapp.com/favourites/status/payment/${id}`, {
           method: "PATCH",
           body: JSON.stringify({
             invoiceID,
@@ -119,7 +119,7 @@ export default function Favourites() {
         ) : (
           <h1 className="text-align-center">Favourite Lists</h1>
         )}
-        <div className="grid-template">
+        <div className="grid-template pl-28">
           {favourites.length !== 0 ? (
             favourites?.map((data) => {
               return (

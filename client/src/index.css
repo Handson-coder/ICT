@@ -17,8 +17,17 @@ code {
   background-color: #292a2c;
 }
 
+.navbar-start {
+  padding-left: 2rem;
+}
+
+.landing-container {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
 .container {
-  height: 99vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -57,9 +66,9 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: -15rem;
+  margin-top: -10rem;
   margin-bottom: 5rem;
-  margin-left: 6rem;
+  margin-left: 15rem;
   margin-right: 5rem;
   align-items: center;
   line-height: 1.6;
@@ -105,10 +114,9 @@ code {
 }
 
 .chart {
-  padding-top: 0;
+  padding-left: 9.5rem;
+  padding-right: 9.5rem;
   padding-bottom: 4rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
 }
 
 .image {

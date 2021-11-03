@@ -14,44 +14,44 @@ export default function NowPlaying() {
   return (
     <div className="flex flex-col mx-5 bg-neutral rounded-lg shadow-md">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div className="py-5 align-middle inline-block min-w-full sm:px-6 lg:px-8 bg-neutral">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-500 text-center ">
-              <thead className="bg-base-300">
+              <thead className="bg-base-content">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium text-neutral-content uppercase tracking-wider"
+                    className="px-6 py-3 text-xs font-medium text-gray-800 uppercase tracking-wider"
                   >
                     #
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium text-neutral-content uppercase tracking-wider"
+                    className="px-6 py-3 text-xs font-medium text-gray-800 uppercase tracking-wider"
                   >
                     Image
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium text-neutral-content uppercase tracking-wider"
+                    className="px-6 py-3 text-xs font-medium text-gray-800 uppercase tracking-wider"
                   >
                     Title
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium text-neutral-content uppercase tracking-wider"
+                    className="px-6 py-3 text-xs font-medium text-gray-800 uppercase tracking-wider"
                   >
                     Genre
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium text-neutral-content uppercase tracking-wider"
+                    className="px-6 py-3 text-xs font-medium text-gray-800 uppercase tracking-wider"
                   >
                     Price
                   </th>
                   <th
                     scope="col"
-                    className="pl-20 px-6 py-3 text-xs font-medium text-neutral-content uppercase tracking-wider"
+                    className="pl-20 px-6 py-3 text-xs font-medium text-gray-800 uppercase tracking-wider"
                   >
                     Option
                   </th>
