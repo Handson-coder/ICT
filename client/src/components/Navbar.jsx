@@ -50,7 +50,7 @@ export default function Navbar() {
         <div className="px-2 mx-2 navbar-start">
           <button onClick={goToLandingPage}>
             <span className="text-2xl font-birthstone italic">XX-</span>
-            <span className="text-2xl font-birthstone italic">ITC</span>
+            <span className="text-2xl font-birthstone italic">ICT</span>
           </button>
         </div>
         <div className="hidden px-2 mx-2 navbar-center lg:flex">
@@ -101,7 +101,7 @@ export default function Navbar() {
         <div className="px-2 mx-2 navbar-start">
           <button onClick={goToLandingPage}>
             <span className="text-2xl font-birthstone italic">XX-</span>
-            <span className="text-2xl font-birthstone italic">ITC</span>
+            <span className="text-2xl font-birthstone italic">ICT</span>
           </button>
         </div>
         <div className="hidden px-2 mx-2 navbar-center lg:flex">

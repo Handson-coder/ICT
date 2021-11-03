@@ -10,7 +10,7 @@ import {
   SITE_PAYMENT,
 } from "../keys";
 
-const baseUrl = 'https://handson-itc.herokuapp.com'
+const baseUrl = 'https://handson-ict.herokuapp.com'
 
 export const setIsLoggedIn = (boolean) => {
   return {

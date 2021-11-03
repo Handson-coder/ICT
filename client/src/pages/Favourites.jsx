@@ -67,7 +67,7 @@ export default function Favourites() {
       confirmButtonText: "Submit",
       showLoaderOnConfirm: true,
       preConfirm: (invoiceID) => {
-        return fetch(`https://handson-itc.herokuapp.com/favourites/status/payment/${id}`, {
+        return fetch(`https://handson-ict.herokuapp.com/favourites/status/payment/${id}`, {
           method: "PATCH",
           body: JSON.stringify({
             invoiceID,
