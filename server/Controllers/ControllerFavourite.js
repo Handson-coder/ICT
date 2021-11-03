@@ -63,13 +63,13 @@ class ControllerFavourite {
       sendNodemailer(
         `${req.user.email}`,
         "Booking Ticket Payment Pending",
-        `Hello, ${req.user.username}. Thank you for registering on XX-ITC. Here are your Movie Ticket informations:
+        `Hello, ${req.user.username}. Thank you for registering on XX-ICT. Here are your Movie Ticket informations:
 
         Your Name: ${req.user.username}
         Movie Title: ${foundFavourite.Movie.title}
         Movie Genre: ${foundFavourite.Movie.genre}
         Price: Rp. ${foundFavourite.Movie.price.toLocaleString("id-id")},-
-        Your Payment ID: ${invoice.id} [ IMPORTANT !! , please copy this is ID for confirming your payment to Cinema XX-ITC ]
+        Your Payment ID: ${invoice.id} [ IMPORTANT !! , please copy this is ID for confirming your payment to Cinema XX-ICT ]
 
         Click this site to confirm your payment : ${invoice.invoice_url}`
       );
