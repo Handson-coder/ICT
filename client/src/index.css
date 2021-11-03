@@ -166,3 +166,11 @@ code {
 .favourite-container .container-history img {
   width: 5rem;
 }
+
+.paid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 18px;
+  padding-bottom: 5px;
+}

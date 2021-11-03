@@ -67,21 +67,18 @@ export default function Favourites() {
       confirmButtonText: "Submit",
       showLoaderOnConfirm: true,
       preConfirm: (invoiceID) => {
-        return fetch(
-          `https://mediku-app-server.herokuapp.com/xendits/invoice/${id}/status`,
-          {
-            method: "PATCH",
-            body: JSON.stringify({
-              invoiceID: invoiceID,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-              access_token: localStorage.access_token,
-            },
-          }
-        )
-          .then((response) => {
-            return response.json();
+        return fetch(`http://localhost:9000/favourites/status/payment/${id}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            invoiceID,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            access_token: localStorage.access_token,
+          },
+        })
+          .then((res) => {
+            return res.json();
           })
           .then((data) => {
             for (let q = 0; q < data.message.length; q++) {
@@ -159,14 +156,18 @@ export default function Favourites() {
                           Rp. {data?.Movie?.price?.toLocaleString("id-id")},-
                         </h1>
                       </div>
-                      <div className="pl-6">
-                        <button
-                          onClick={() => goToPaymentSite(data.id)}
-                          className="btn btn-outline btn-success"
-                        >
-                          Pay Now
-                        </button>
-                      </div>
+                      {data.is_paid === false ? (
+                        <div className="pl-6">
+                          <button
+                            onClick={() => goToPaymentSite(data.id)}
+                            className="btn btn-outline btn-success"
+                          >
+                            Pay Now
+                          </button>
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
                     </div>
                     {data.is_paid === false ? (
                       <div className="flex pt-5">
@@ -188,9 +189,11 @@ export default function Favourites() {
                         </div>
                       </div>
                     ) : (
-                      <button disabled className="paid">
-                        Paid
-                      </button>
+                      <div className="paid">
+                        <button disabled className="text-lg uppercase">
+                          Paid
+                        </button>
+                      </div>
                     )}
                   </div>
                 </div>

@@ -782,7 +782,7 @@ export default function SignUp() {
           </div>
           <div className="pt-10">
             <div>
-              <p>already have an account?</p>
+              <p>Already have an account?</p>
             </div>
             <div className="pt-5">
               <Link className="btn btn-outline" to="/sign-in">

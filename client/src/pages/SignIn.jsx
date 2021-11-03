@@ -762,7 +762,7 @@ export default function SignIn() {
           </div>
           <div className="pt-10">
             <div>
-              <p>don't have an account yet?</p>
+              <p>Don't have an account yet?</p>
             </div>
             <div className="pt-5">
               <Link className="btn btn-outline" to="/sign-up">
