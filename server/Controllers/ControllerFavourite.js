@@ -44,11 +44,8 @@ class ControllerFavourite {
       genre: req.body.genre
     }
     const { id } = req.params
-    console.log(data);
-    console.log(id);
     try {
       const findMovie = await Movie.findByPk(id)
-      console.log(findMovie);
       if (findMovie) {
         const result = await Movie.update(data, { where: { id }, returning: true })
         res.status(200).json(result[1][0])
@@ -63,7 +60,7 @@ class ControllerFavourite {
   static async deleteMovieFromFavList(req, res, next) {
     const { id } = req.params
     try {
-      const foundFavourite = await Favourite.findOne({ where: {} })
+      const foundFavourite = await Favourite.findOne({ where: { id } })
       if (foundFavourite) {
         await Favourite.destroy({ where: { id } })
         res.status(200).json({ message: `Success deleted from your Favourite List` })

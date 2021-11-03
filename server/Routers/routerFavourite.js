@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const ControllerFavourite = require('../Controllers/ControllerFavourite')
 const authentication = require('../middlewares/authentication')
-const authorizationFavourite = require('../middlewares/authorization')
+const { authorizationFavourite } = require('../middlewares/authorization')
 
 router.use(authentication)
 router.get("/", ControllerFavourite.findAllFavouriteList)

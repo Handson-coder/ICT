@@ -3,7 +3,7 @@ const { Favourite } = require('../models')
 const authorizationFavourite = async (req, res, next) => {
   const { id } = req.params
   try {
-    const foundFavourite = await Favourite.findOne({ where: { MovieId: id } })
+    const foundFavourite = await Favourite.findOne({ where: { id } })
     if (req.user.id == foundFavourite.UserId) {
       next()
     } else {
@@ -14,4 +14,4 @@ const authorizationFavourite = async (req, res, next) => {
   }
 }
 
-module.exports = authorizationFavourite
+module.exports = { authorizationFavourite }

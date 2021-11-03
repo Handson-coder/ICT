@@ -3,12 +3,9 @@ import {
   FETCH_MOVIE,
   GET_GENRES,
   GET_SUM_OF_GENRE,
-  // DELETE_ITEM,
-  // FETCH_CATEGORIES,
+  DELETE_MOVIE,
+  FETCH_FAVOURITES,
   SET_IS_LOGGED_IN,
-  // SET_CREATE,
-  // FETCH_ITEM,
-  // LOGIN_USER
 } from '../keys'
 
 const initialState = {
@@ -16,9 +13,8 @@ const initialState = {
   genres: [],
   sumOfGenre: [],
   movie: {},
-  // categories: [],
+  favourites: [],
   isLoggedIn: false,
-  // user: {}
 }
 
 function reducer(state = initialState, action) {
@@ -32,18 +28,12 @@ function reducer(state = initialState, action) {
       return { ...state, genres: payload }
     case GET_SUM_OF_GENRE:
       return { ...state, sumOfGenre: payload }
-    // case FETCH_ITEM:
-    //   return { ...state, item: payload }
-    // case DELETE_ITEM:
-    //   return { ...state, items: state.items.filter((L) => L.id !== payload) }
-    // case FETCH_CATEGORIES:
-    //   return { ...state, categories: payload }
+    case DELETE_MOVIE:
+      return { ...state, favourites: state.favourites.filter((L) => L.id !== payload) }
+    case FETCH_FAVOURITES:
+      return { ...state, favourites: payload }
     case SET_IS_LOGGED_IN:
       return { ...state, isLoggedIn: payload }
-    // case SET_CREATE:
-    //   return { ...state, items: [...state.items, payload] }
-    // case LOGIN_USER:
-    //   return { ...state, user: payload }
     default:
       return state
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { settingIsLoggedIn } from "../store/actions";
@@ -8,10 +8,35 @@ export default function Navbar() {
   const history = useHistory();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
+  const [classNowPlaying, setClassNowPlaying] = useState("");
+  const [classSignIn, setClassSignIn] = useState("");
+  const [classFavourites, setClassFavourites] = useState("");
 
   function goToLandingPage() {
     history.push("/");
   }
+
+  const choosenNavbarMenuNowPlaying = () => {
+    setClassSignIn("");
+    setClassFavourites("");
+    setClassNowPlaying(
+      "btn btn-ghost btn-sm rounded-btn border-base-100 border-b-4"
+    );
+  };
+  const choosenNavbarMenuSignIn = () => {
+    setClassNowPlaying("");
+    setClassFavourites("");
+    setClassSignIn(
+      "btn btn-ghost btn-sm rounded-btn border-base-100 border-b-4"
+    );
+  };
+  const choosenNavbarMenuFavourites = () => {
+    setClassFavourites(
+      "btn btn-ghost btn-sm rounded-btn border-base-100 border-b-4"
+    );
+    setClassNowPlaying("");
+    setClassSignIn("");
+  };
 
   const signOutButton = () => {
     dispatch(settingIsLoggedIn(false));
@@ -31,18 +56,34 @@ export default function Navbar() {
         <div className="hidden px-2 mx-2 navbar-center lg:flex">
           <div className="flex items-stretch">
             <Link
+              onClick={choosenNavbarMenuNowPlaying}
+              className={
+                classNowPlaying
+                  ? classNowPlaying
+                  : "btn btn-ghost btn-sm rounded-btn"
+              }
               to="/now-playing"
-              className="btn btn-ghost btn-sm rounded-btn"
             >
               Now Playing
             </Link>
-            <LinkToChart className="btn btn-ghost btn-sm rounded-btn" to="toChart" smooth={true} duration={1000}>
+            <LinkToChart
+              className="btn btn-ghost btn-sm rounded-btn"
+              to="toChart"
+              smooth={true}
+              duration={1000}
+            >
               Chart
             </LinkToChart>
           </div>
         </div>
         <div className="navbar-end">
-          <Link to="/sign-in" className="btn btn-ghost btn-sm rounded-btn">
+          <Link
+            to="/sign-in"
+            onClick={choosenNavbarMenuSignIn}
+            className={
+              classSignIn ? classSignIn : "btn btn-ghost btn-sm rounded-btn"
+            }
+          >
             Sign In
           </Link>
         </div>
@@ -60,12 +101,25 @@ export default function Navbar() {
         <div className="hidden px-2 mx-2 navbar-center lg:flex">
           <div className="flex items-stretch">
             <Link
+              onClick={choosenNavbarMenuNowPlaying}
               to="/now-playing"
-              className="btn btn-ghost btn-sm rounded-btn"
+              className={
+                classNowPlaying
+                  ? classNowPlaying
+                  : "btn btn-ghost btn-sm rounded-btn"
+              }
             >
               Now Playing
             </Link>
-            <Link to="/favourites" className="btn btn-ghost btn-sm rounded-btn">
+            <Link
+              to="/favourites"
+              onClick={choosenNavbarMenuFavourites}
+              className={
+                classFavourites
+                  ? classFavourites
+                  : "btn btn-ghost btn-sm rounded-btn"
+              }
+            >
               Favourites
             </Link>
             <LinkToChart

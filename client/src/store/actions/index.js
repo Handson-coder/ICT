@@ -4,14 +4,10 @@ import {
   FETCH_MOVIE,
   GET_GENRES,
   GET_SUM_OF_GENRE,
-  // FETCH_ITEM,
-  // DELETE_ITEM,
-  // FETCH_CATEGORIES,
+  FETCH_FAVOURITES,
+  DELETE_MOVIE,
   SET_IS_LOGGED_IN,
-  // SET_CREATE,
-  // LOGIN_USER,
-  // LOGIN_GOOGLE,
-  // CREATE_USER
+  SITE_PAYMENT,
 } from "../keys";
 
 const baseUrl = 'http://localhost:9000'
@@ -35,12 +31,25 @@ export const fetchMovies = (payload) => {
     payload
   }
 }
+export const fetchFavourites = (payload) => {
+  return {
+    type: FETCH_FAVOURITES,
+    payload
+  }
+}
 export const fetchMovie = (payload) => {
   return {
     type: FETCH_MOVIE,
     payload
   }
 }
+
+export const deleteMovie = (payload) => {
+  return {
+    type: DELETE_MOVIE,
+    payload
+  };
+};
 
 export const genre = (payload) => {
   return {
@@ -141,6 +150,13 @@ export const signUp = (payload) => {
   }
 }
 
+export function paymentSite(payload) {
+  return {
+    type: SITE_PAYMENT,
+    payload,
+  };
+}
+
 export const addToFavouriteList = (payload) => {
   return (dispatch) => {
     return axios.post(`${baseUrl}/favourites/${payload.MovieId}`, {
@@ -151,5 +167,56 @@ export const addToFavouriteList = (payload) => {
         access_token: localStorage.access_token
       }
     })
+  }
+}
+
+export const fetchingFavourites = (payload) => {
+  return (dispatch) => {
+    axios.get(`${baseUrl}/favourites`, {
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+      .then(({ data }) => {
+        dispatch(fetchFavourites(data))
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+export function getEndpoint(id) {
+  return function (dispatch) {
+    return fetch(`${baseUrl}/xendits/invoice/${id}`, {
+      method: "POST",
+      headers: {
+        access_token: localStorage.access_token
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        dispatch(paymentSite({
+          invoiceURL: data.invoiceURL,
+          invoiceID: data.invoice_id
+        }));
+      })
+      .catch((err) => console.log(err))
+  };
+}
+
+export const deletingFavourite = (id) => {
+  return (dispatch) => {
+    axios.delete(`${baseUrl}/favourites/${id}`, {
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+    .then((_) => {
+      dispatch(deleteMovie(id));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 }

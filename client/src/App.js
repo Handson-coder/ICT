@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import NowPlaying from './pages/NowPlaying'
 import DetailMovie from './pages/DetailMovie';
+import Favourites from './pages/Favourites';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <Switch>
         <Route path="/movies/:id">
           <DetailMovie></DetailMovie>
+        </Route>
+        <Route path="/favourites">
+          <Favourites></Favourites>
         </Route>
         <Route path="/now-playing">
           <NowPlaying></NowPlaying>
