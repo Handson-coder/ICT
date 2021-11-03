@@ -6,6 +6,7 @@ import {
   DELETE_MOVIE,
   FETCH_FAVOURITES,
   SET_IS_LOGGED_IN,
+  SITE_PAYMENT,
 } from '../keys'
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   movie: {},
   favourites: [],
   isLoggedIn: false,
+  sitePayment: {},
 }
 
 function reducer(state = initialState, action) {
@@ -34,6 +36,8 @@ function reducer(state = initialState, action) {
       return { ...state, favourites: payload }
     case SET_IS_LOGGED_IN:
       return { ...state, isLoggedIn: payload }
+    case SITE_PAYMENT:
+      return { ...state, sitePayment: action.payload };
     default:
       return state
   }

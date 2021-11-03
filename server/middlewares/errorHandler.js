@@ -1,5 +1,4 @@
 module.exports = function (err, req, res, next) {
-    console.log(err);
     let code = err.code || 500
     let message = 'Internal Server Error'
 

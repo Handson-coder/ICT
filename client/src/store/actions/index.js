@@ -186,7 +186,7 @@ export const fetchingFavourites = (payload) => {
 
 export function getEndpoint(id) {
   return function (dispatch) {
-    return fetch(`${baseUrl}/xendits/invoice/${id}`, {
+    return fetch(`${baseUrl}/favourites/create/payment/${id}`, {
       method: "POST",
       headers: {
         access_token: localStorage.access_token
@@ -212,11 +212,11 @@ export const deletingFavourite = (id) => {
         access_token: localStorage.access_token
       }
     })
-    .then((_) => {
-      dispatch(deleteMovie(id));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((_) => {
+        dispatch(deleteMovie(id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

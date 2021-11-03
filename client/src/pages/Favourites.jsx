@@ -45,15 +45,15 @@ export default function Favourites() {
       });
   };
 
-  const goToPaymentSite = async (id) => {
-    await dispatch(getEndpoint(id));
+  const goToPaymentSite = (id) => {
+    dispatch(getEndpoint(id));
+    Swal.fire({
+      icon: "info",
+      title: "Email Sent",
+      text: `Your payment ID was sent to ${localStorage.email}, please check it in your inbox/junk`,
+    });
     if (sitePayment.invoiceURL && sitePayment.invoiceID) {
-      await Swal.fire({
-        icon: "info",
-        title: "Email Sent",
-        text: `Your payment ID was sent to ${localStorage.email}`,
-      });
-      await window.open(`${sitePayment.invoiceURL}`);
+      window.open(`${sitePayment.invoiceURL}`);
     }
   };
   const confirmPayment = async (id) => {

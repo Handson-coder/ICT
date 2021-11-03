@@ -1,4 +1,6 @@
 const { Movie, Favourite } = require('../models')
+const { XenditInvoice } = require('../helpers/xenditPayment')
+const sendNodemailer = require("../helpers/nodemailer");
 
 class ControllerFavourite {
   static async findAllFavouriteList(req, res, next) {
@@ -36,6 +38,55 @@ class ControllerFavourite {
       }
     } catch (err) {
       next(err)
+    }
+  }
+
+  static async createPaymentTicket(req, res, next) { // kalau udah bayar
+    const { id } = req.params
+    const { email } = req.user;
+    const randomID = Math.random().toString(36).slice(2);
+    try {
+      const foundFavourite = await Favourite.findByPk(id, {
+        include: [
+          {
+            model: Movie
+          }
+        ]
+      })
+      const invoice = await XenditInvoice.createInvoice({
+        externalID: `${randomID}`,
+        payerEmail: email,
+        description: `Payment for Movie ${foundFavourite.Movie.title} Ticket`,
+        amount: foundFavourite.Movie.price,
+        shouldSendEmail: true,
+      });
+      sendNodemailer(
+        `${req.user.email}`,
+        "Booking Ticket Payment Pending",
+        `Hello, ${req.user.username}. Thank you for registering on XX-ITC. Here are your Movie Ticket informations:
+
+        Your Name: ${req.user.username}
+        Movie Title: ${foundFavourite.Movie.title}
+        Movie Genre: ${foundFavourite.Movie.genre}
+        Price: Rp. ${foundFavourite.Movie.price.toLocaleString("id-id")},-
+        Your Payment ID: ${invoice.id} [ IMPORTANT !! , please copy this is ID for confirming your payment to Cinema XX-ITC ]
+
+        Click this site to confirm your payment : ${invoice.invoice_url}`
+      );
+      res.status(201).json({
+        invoice_id: invoice.id,
+        external_id: invoice.external_id,
+        status: invoice.status,
+        amount: invoice.amount,
+        merchant_name: invoice.merchant_name,
+        payer_email: invoice.payer_email,
+        expiry_date: invoice.expiry_date,
+        invoiceURL: invoice.invoice_url,
+        description: invoice.description
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
     }
   }
 
