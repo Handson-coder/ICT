@@ -73,7 +73,7 @@ export default function DetailMovie() {
             </span>
           </div>
           <div className="mt-8 flex">
-            <div className="pl-10 pr-44">
+            <div className="pl-10 pr-60">
               <button
                 onClick={() => openNewTabTrailer(movie.trailerUrl)}
                 className="btn btn-outline"
@@ -81,7 +81,7 @@ export default function DetailMovie() {
                 Watch Trailer
               </button>
             </div>
-            <div className="pl-44 pr-10">
+            <div className="pl-96 pr-10">
               {!isLoggedIn ? (
                 <Link to={"/sign-in"} className="btn btn-outline">
                   Add to Favourite List
