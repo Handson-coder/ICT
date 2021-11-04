@@ -63,7 +63,7 @@ class ControllerFavourite {
       sendNodemailer(
         `${req.user.email}`,
         "Booking Ticket Payment Pending",
-        `Hello, ${req.user.username}. Thank you for registering on XX-ICT. Here are your Movie Ticket informations:
+        `Hello, ${req.user.username}. Here are your Booking Ticket informations:
 
         Your Name: ${req.user.username}
         Movie Title: ${foundFavourite.Movie.title}
@@ -109,14 +109,14 @@ class ControllerFavourite {
         sendNodemailer(
           `${req.user.email}`,
           "Registration Payment Succeess",
-          `Hello, ${req.user.username}. Thank you for registering on Mediku. Here are your registration informations:
+          `Hello, ${req.user.username}. Here are your Booking Ticket informations:
   
           Your Name: ${req.user.username}
           Movie Title: ${foundFavourite.Movie.title}
           Movie Genre: ${foundFavourite.Movie.genre}
           Price: Rp. ${foundFavourite.Movie.price.toLocaleString("id-id")},-
           
-          Hoooraayy! your payment has confirmed by Xendit, Enjoy your Movie :)`
+          Your payment has confirmed by Cinema XX-ICT, Enjoy your Movie :)`
         );
         const data = {
           is_paid: true
